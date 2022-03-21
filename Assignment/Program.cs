@@ -19,8 +19,9 @@ namespace Assignment
             Input textInput = new();
             string userInput = " ";
             string text = "";
-            Console.Write("1. Do you want to enter text via the keyboard? \n2. Do you want to read in text from the file?\n : ");
+            Console.Write("1. Do you want to enter text via the keyboard? \n2. Do you want to read in text from the file?");
             while (userInput != "1" && userInput != "2") {
+                Console.Write("\n : ");
                 userInput = Console.ReadLine();
             }
             if (userInput == "1")
@@ -53,6 +54,8 @@ namespace Assignment
 
             Console.ReadKey();
         }
+
+
         
         
     

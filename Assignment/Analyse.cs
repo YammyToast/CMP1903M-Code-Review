@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Assignment
 {
@@ -65,7 +66,43 @@ namespace Assignment
             MatchCollection matchLowerCase = rgLowerCase.Matches(input);
             values[4] = matchLowerCase.Count;
 
+            // Finds occurences of long words
+            string longWords = @"\b\w{7,}\b";
+            Regex rgLongWords = new Regex(longWords);
+            MatchCollection matchLongWords = rgLongWords.Matches(input);
+
+            WriteFile(matchLongWords);
+
             return values;
+        }
+
+        // Unique Method
+        private void WriteFile(MatchCollection longWordCollection) {
+            try
+            {
+                string localFileDir = Environment.CurrentDirectory;
+                string[] subs = localFileDir.Split(@"\bin");
+                string fileDir = Path.Combine(subs[0], "longWords.txt");
+                if (File.Exists(fileDir))
+                {
+                    File.Delete(fileDir);
+                }
+                using (FileStream fs = File.Create(fileDir))
+                {
+                    foreach (Match match in longWordCollection)
+                    {
+                        Console.WriteLine($"{match.Value} at position {match.Index}");
+                        Byte[] word = new UTF8Encoding(true).GetBytes(match.Value + "\n");
+                        fs.Write(word, 0, word.Length);
+                    }
+                }
+            }
+            catch(Exception ex) {
+                Console.WriteLine(ex.ToString());
+
+            }
+
+
         }
     }
 }

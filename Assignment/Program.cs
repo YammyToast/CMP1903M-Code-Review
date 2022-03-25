@@ -27,21 +27,23 @@ namespace Assignment
             if (userInput == "1")
             {
                 Console.WriteLine("\n [I] Input Sentences  (* to end)");
-                text = textInput.manualTextInput();
+                textInput.manualTextInput();
             }
             else {
                 Console.Write("\n [I] Input File Name  (ends in .txt)\n : ");
                 string fileName = Console.ReadLine();
-                text = textInput.fileTextInput(fileName);
+                textInput.fileTextInput(fileName);
             }
-
+            text = textInput.fetchedText;
             //Create an 'Analyse' object
             //Pass the text input to the 'analyseText' method
             //Receive a list of integers back
             Analyse analyser = new();
-            List<int> results = analyser.analyseText(text);
-            
 
+            List<int> results = analyser.analyseText(text);
+            IDictionary<char, int> frequencies = analyser.getFrequencies(text);
+
+            
 
 
             //Report the results of the analysis
@@ -49,6 +51,7 @@ namespace Assignment
             reportConsole.outputConsole(results);
 
             //TO ADD: Get the frequency of individual letters?
+            reportConsole.outputFrequencies(frequencies);
 
 
 

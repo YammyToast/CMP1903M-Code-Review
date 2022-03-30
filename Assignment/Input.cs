@@ -99,7 +99,7 @@ namespace Assignment
             try
             {   
                 // If no filename is given, throw a null exception.
-                if (fileName == " ") {
+                if (fileName.Trim() == " ") {
                     throw new ArgumentNullException();
                 }
                 // Read all of the text in the file into a string.

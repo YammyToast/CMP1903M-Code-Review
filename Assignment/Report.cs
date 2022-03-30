@@ -56,7 +56,7 @@ namespace Assignment
 
             }
             // Writes the footer, using the appropriate amount of bars.
-            Console.WriteLine($"└{headerBars[..(keyValueLength[0] + 2)]}┴{headerBars[(keyValueLength[0] - 2)..]}┘");
+            //Console.WriteLine($"└{headerBars[..(keyValueLength[0] + 2)]}┴{headerBars[(keyValueLength[0] - 2)..]}┘");
         }
         /// <summary>
         /// Outputs the character frequencies to the console in the form of a table.
@@ -97,11 +97,6 @@ namespace Assignment
                 string[] subs = localFileDir.Split(@"\bin");
                 string fileDir = Path.Combine(subs[0], "longWords.txt");
 
-                // If the file exists, delete it (overwriting).
-                if (File.Exists(fileDir))
-                {
-                    File.Delete(fileDir);
-                }
 
                 // Creates a new file and opens it:
                 using (FileStream fs = File.Create(fileDir))

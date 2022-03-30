@@ -36,7 +36,7 @@ namespace Assignment
             // DRY iterative implementation to find each measurement.
 
             // Holds all of the regex patterns needed as filters.
-            string[] patterns = new string[] { @"(?![ ]).", @"[.]\s{1}|[.*]+", @"([AEIOUaeiou]){1}", @"([bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]){1}", @"([ABCDEFGHIJKLMNOPQRSTUVWXYZ]){1}", @"([abcdefghijklmnopqrstuvwxyz]){1}" };
+            string[] patterns = new string[] { @"(?![ ,.*]).", @"[.]\s{1}|[.*]+", @"([AEIOUaeiou]){1}", @"([bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]){1}", @"([ABCDEFGHIJKLMNOPQRSTUVWXYZ]){1}", @"([abcdefghijklmnopqrstuvwxyz]){1}" };
             int index = 0;
 
             foreach (string pattern in patterns) {

@@ -30,6 +30,8 @@ namespace Assignment
                 textInput.manualTextInput();
             }
             else {
+                // Switches the static attribute in the Report class to true.
+                Report.option2 = true;
                 Console.Write("\n [I] Input File Name  (ends in .txt)\n : ");
                 string fileName = Console.ReadLine();
                 textInput.fileTextInput(fileName);

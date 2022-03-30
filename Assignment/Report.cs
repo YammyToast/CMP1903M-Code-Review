@@ -10,6 +10,7 @@ namespace Assignment
 {
     class Report
     {
+        public static bool option2 = false;
         /// <summary>
         /// Outputs the analysis results to the console in the form of a table.
         /// </summary>
@@ -90,33 +91,36 @@ namespace Assignment
         /// </returns>
         public void WriteFile(MatchCollection longWordCollection)
         {
-            try
+            if (option2 == true)
             {
-                // Gets a parses the current working directory.
-                string localFileDir = Environment.CurrentDirectory;
-                string[] subs = localFileDir.Split(@"\bin");
-                string fileDir = Path.Combine(subs[0], "longWords.txt");
-
-
-                // Creates a new file and opens it:
-                using (FileStream fs = File.Create(fileDir))
+                try
                 {
-                    foreach (Match match in longWordCollection)
+                    // Gets a parses the current working directory.
+                    string localFileDir = Environment.CurrentDirectory;
+                    string[] subs = localFileDir.Split(@"\bin");
+                    string fileDir = Path.Combine(subs[0], "longWords.txt");
+
+
+                    // Creates a new file and opens it:
+                    using (FileStream fs = File.Create(fileDir))
                     {
-                        // For each word, parse it into bytes, and then write it to the file.
-                        Byte[] word = new UTF8Encoding(true).GetBytes(match.Value + "\n");
-                        fs.Write(word, 0, word.Length);
+                        foreach (Match match in longWordCollection)
+                        {
+                            // For each word, parse it into bytes, and then write it to the file.
+                            Byte[] word = new UTF8Encoding(true).GetBytes(match.Value + "\n");
+                            fs.Write(word, 0, word.Length);
+                        }
                     }
                 }
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine($"Error occured during IO stream: \n {ex}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"Error occured during IO stream: \n {ex}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
 
+                }
             }
 
 
